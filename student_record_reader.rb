@@ -1,7 +1,11 @@
-require File.expand_path(File.dirname(__FILE__) + '/student_record')
+
+require 'java'
+require File.expand_path(File.dirname(__FILE__) + '/Geoff.jar')
 
 
 class StudentRecordReader
+  java_import 'com.geoffzelenka.Student'
+  java_import 'java.text.ParseException'
 
   COMMA_COLUMNS = {
     :first_name => 1,
@@ -68,9 +72,9 @@ class StudentRecordReader
                     d[fmt[:favorite_color]].strip
                   ]
       begin
-        records << StudentRecord.new(*reordered)
-      rescue ArgumentError => e
-        puts "Bad date in record '#{d.join(" ")}' found, skipping..."
+        records << Student.new(*reordered)
+      rescue java.text.ParseException => e
+        puts "Bad date in record '#{d.join(" ")} found, skipping..."
       end
     end
     return records
