@@ -30,8 +30,10 @@
 ## Design considerations
 There are 3 main things to do in this problem, read in the records, sort
 them, and then print them back out. So, I made 3 classes to handle those
-3 things as well as a Student class to hold the data for each record.  Sorting and printing are fairly
-straight forward.  There's a rub with the reading in because of the
+3 things as well as a Student class to hold the data for each record.
+
+Sorting and printing are fairly
+straight forward.  There's a rub with the reading because of the
 different file formats and column orderings.  To map the different
 formats together I made some constants that defined where the fields
 were ordered in each file, and then rearranged them before putting them
