@@ -54,6 +54,13 @@ RSpec.describe Student do
       #puts s.getDateOfBirth
       expect { Student.new(*@args) }.not_to raise_exception
     end
+    it 'does not throws parse exception on bad dates cause its still dumb' do
+      java_import java.text.ParseException
+      @args[4] = '13/32/2001'
+      #s = Student.new(*@args)
+      #puts s.getDateOfBirth
+      expect { Student.new(*@args) }.not_to raise_exception
+    end
 
   end
 
