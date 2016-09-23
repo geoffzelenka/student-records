@@ -1,7 +1,7 @@
 #!/usr/bin/env jruby
 
-require File.expand_path(File.dirname(__FILE__) + '/student_record_reader')
-require File.expand_path(File.dirname(__FILE__) + '/student_record_printer')
+require File.expand_path(File.dirname(__FILE__) + '/lib/student_record_reader')
+require File.expand_path(File.dirname(__FILE__) + '/lib/student_record_printer')
 
 def main
   files = ['comma.txt']
