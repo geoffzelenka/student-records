@@ -26,7 +26,8 @@ public class Student {
         } else {
             date_format = "MM/dd/yyyy";
         }
-        DateFormat df = new SimpleDateFormat(date_format);
+        SimpleDateFormat df = new SimpleDateFormat(date_format);
+        df.setLenient(false);
         m_date_of_birth = df.parse(dob);
     }
 
