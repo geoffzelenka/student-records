@@ -5,9 +5,15 @@
 * make, javac, and jar
 * rspec
 
+## Running tests
+1. make
+2. jruby -S gem install bundler
+3. bundler install
+4. rpsec
+
 ## How to run
-* Build the java archive by running make
-* Run students.rb
+1. Build the java archive by running make
+2. Run students.rb
   * The program expects 3 data files named and formatted as follows
         * comma.txt
             * Delimiter: `,`
