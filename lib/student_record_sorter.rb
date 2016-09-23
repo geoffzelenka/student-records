@@ -1,3 +1,5 @@
+# Class to do the sorting required for output
+
 class StudentRecordSorter
   def order_by_campus_then_last_name(records)
     records.sort_by { |x| [x.campus, x.last_name] }

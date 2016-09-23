@@ -7,6 +7,8 @@ class StudentRecordReader
   java_import 'com.geoffzelenka.Student'
   java_import 'java.text.ParseException'
 
+  # Some constants to define the mapping of fields in the text files
+  # to how com.geoffzelenka.Student expects input
   COMMA_COLUMNS = {
     :first_name => 1,
     :last_name => 0,
@@ -45,6 +47,10 @@ class StudentRecordReader
     end
   end
   
+  # This function needs to do some sanity checking on the input
+  # make sure correct the number of fields are there
+  # could possibly do some discovery on the first line to try and figure out
+  # what the delimeter is
   def read_file(fn=@filename, delim=@delim)
     data = Array.new
     File.open(fn).each do |line|
@@ -54,6 +60,7 @@ class StudentRecordReader
   end
 
   def recordify(data = [], delim=@delim)
+    # based on the delimiter we know what the column format is
     if delim == ','
       fmt = COMMA_COLUMNS
     elsif delim == '$'
@@ -63,7 +70,8 @@ class StudentRecordReader
     end
 
     records = []
-  
+    # Reorder the fields from how they were split from the file to how
+    # the Student class expects them
     data.each do |d|
       reordered = [ d[fmt[:last_name]].strip,
                     d[fmt[:first_name]].strip,
@@ -71,6 +79,7 @@ class StudentRecordReader
                     d[fmt[:date_of_birth]].strip,
                     d[fmt[:favorite_color]].strip
                   ]
+      # Try and make the student
       begin
         records << Student.new(*reordered)
       rescue java.text.ParseException => e
@@ -80,6 +89,7 @@ class StudentRecordReader
     return records
   end
 
+ 
   def get_records(fn=@filename, delim=@delim)
     data = read_file(fn, delim)
     return recordify(data, delim)
